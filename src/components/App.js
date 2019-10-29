@@ -4,7 +4,6 @@ import Loader from 'react-loader-spinner';
 import SearchForm from './SearchForm/SearchForm';
 import fetchImageApi from '../services/pixabayApi';
 import Gallary from './Gallery/Gallery';
-// import Loaderr from './Loader/Loader';
 import styles from './App.module.css';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
@@ -58,6 +57,7 @@ class App extends Component {
       <div className={styles.app}>
         <SearchForm onSearch={this.onSearch} />
         {error && toast.warning(error.message)}
+        <Gallary items={images} isLoading={isLoading} />
         {isLoading && (
           <Loader
             type="Plane"
@@ -67,11 +67,11 @@ class App extends Component {
             timeout={3000} // 3 secs
           />
         )}
-        <Gallary items={images} />
         {images.length > 0 && (
           <button
             className={styles.button}
             type="button"
+            disabled={isLoading}
             onClick={this.fetchImage}
           >
             Load more

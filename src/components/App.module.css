@@ -27,3 +27,7 @@
 .button:focus {
   background-color: #1f65d6;
 }
+.button[disabled] {
+  pointer-events: none;
+  background-color: #bdbdbd;
+}

@@ -71,6 +71,7 @@ export default class PhotoCard extends Component {
           >
             <i className="material-icons">zoom_out_map</i>
           </button>
+
           {isModalOpen && (
             <Modal onClose={this.closeModal}>
               <img src={largeImage} alt={alt} />
