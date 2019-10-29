@@ -7,6 +7,8 @@ import Gallary from './Gallery/Gallery';
 import styles from './App.module.css';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
+toast.configure();
+
 class App extends Component {
   state = {
     images: [],

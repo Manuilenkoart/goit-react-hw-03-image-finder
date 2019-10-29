@@ -1,7 +1,12 @@
-/*eslint-disable*/
 import React, { Component } from 'react';
-import styles from '../SearchForm/SearchForm.module.css';
+import PropTypes from 'prop-types';
+import styles from './SearchForm.module.css';
+
 export default class SearchForm extends Component {
+  static propTypes = {
+    onSearch: PropTypes.func.isRequired,
+  };
+
   state = {
     query: '',
   };
@@ -11,6 +16,7 @@ export default class SearchForm extends Component {
       query: e.target.value,
     });
   };
+
   handleKey = e => {
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -18,15 +24,18 @@ export default class SearchForm extends Component {
       this.setState({ query: '' });
     }
   };
+
   render() {
+    const { query } = this.state;
     return (
-      <form className={styles.search_form} onKeyPress={this.handleKey}>
+      <form className={styles.search_form}>
         <input
           type="text"
           placeholder="Search images..."
-          value={this.state.query}
+          value={query}
           onChange={this.handleChange}
           autoComplete="off"
+          onKeyPress={this.handleKey}
         />
       </form>
     );
